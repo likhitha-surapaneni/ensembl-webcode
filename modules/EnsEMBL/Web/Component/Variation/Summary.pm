@@ -254,7 +254,11 @@ sub variation_source {
     my $eva_url  = $hub->get_ExtURL("EVA_STUDY");
     my $source_label = "$source EVA study";
     $source_link = $eva_url ? qq{<a href="$eva_url$source" class="constant">$source_label</a>} : $source_label;
-  } else {
+  } 
+    elsif ($source =~ /gnomAD/) {
+    $source_link = $url ? qq{<a href="$url" class="constant">$source_prefix $source</a>} : "";
+  }
+    else {
     $source_link = $url ? qq{<a href="$url" class="constant">$source_prefix $source</a>} : "$source $version";
   }
   
